@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import {useState, useContext } from 'react';
 import { Routes, Route  } from 'react-router-dom';
 
 //components
@@ -13,13 +13,17 @@ import './App.css';
 
 
 function App() {
+
+  const [user, setUser] = useState('')
+
+
   return (
     <div className="App">
-      <UserContext.Provider value={'Christina'}>
+      <UserContext.Provider value={user}>
         <Nav />
         {/* We need to wrap all of our routes insde react router routes component */}
         <Routes>
-          <Route path='login' element={<Login/>} />
+          <Route path='login' element={<Login setUser={setUser} />} />
         </Routes>
 
       </UserContext.Provider>
