@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
 const Login = ({ setUser }) => {
+	// Once the user clicks submit, we will mimic logging in and conditionally render our nav bar.
 	const [username, setUsername] = useState('');
     const navigate = useNavigate()
 
@@ -13,11 +14,13 @@ const Login = ({ setUser }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
         setUser(username)
+		// We can use useNavigate from RR to redirect our users to a different component/page
+        // DO NOT FORGET the forward / in front of path in navigate()
         navigate('/pokemon/list')
 	};
 
 	return (
-		<form className="mx-auto m-2 p-2 border " id="login-form">
+		<form className="mx-auto m-2 p-2 border " id="login-form" onSubmit={handleSubmit}>
 			<div className="mb-3">
 				<label htmlFor="exampleInputUser1" className="form-label">
 					Username
@@ -45,7 +48,7 @@ const Login = ({ setUser }) => {
 				/>
 			</div>
 
-			<button onClick={handleSubmit} type="submit" className="btn btn-primary">
+			<button type="submit" className="btn btn-primary">
 				Submit
 			</button>
 		</form>

@@ -35,7 +35,10 @@ const Nav = () => {
 								Pokemon List
 							</Link>
 						</li>
-						{!user ? (
+						{
+						!user 
+						? 
+						(
 							<li className="nav-item">
 								<Link className="nav-link" to="login">
 									Login
